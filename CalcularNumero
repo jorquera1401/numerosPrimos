@@ -1,0 +1,67 @@
+!Doctype html>
+<html>
+<head></head>
+
+<body>
+<script>
+/*funcion para numero primo*/
+function primos(){
+/*sacamos el valor del input*/
+	var numero = document.getElementById("numbers").value;
+    var numeros = [];
+    
+    var nodo = document.createElement("p");
+    
+    var ar = [];    
+    /*al recorrer dividimos el numero por  los numeros anteriores a este
+    **guardamos los resultados en un array*/
+    for(var i = 1; i <= numero; i++ ){
+    	var resultado = numero / i;
+        numeros.push(resultado);
+    	
+    	 
+    }
+    
+  
+   	 
+  	/*introduciendo el texto o valor del elemento creado en el nodo*/
+    var texto = document.createTextNode(numeros);
+    nodo.appendChild(texto);
+    /**imprimimos el elemento creado en el nodo a un div */
+    document.getElementById("opcion").appendChild(nodo);
+  	
+    var pre = [];
+    /*guardamos todos los resultados calculados anteriormente que dio un numero entero, las pasamos al array pre[]*/
+   for(var i = 0; i <= numeros.length; i++){
+   		if(numeros[i] %1 == 0){
+        	pre.push(numeros[i]);
+        }	
+   }
+   
+   var primos = [];
+   /*preguntamos si el array contiene solo dos resultados, ya que un numero primo tiene dos resultados 
+   el dividido por si mismo y por 1. Ya tenido casi el 100% resuelto, podemos afirmas cuales numeros son primos */
+   if(pre.length == 2){
+   		primos.push(pre[0]);
+        alert("es primo")
+        var result = document.createElement("p");
+        var h = document.createTextNode(primos);
+        result.appendChild(h);
+        document.getElementById("primo").appendChild(result);
+   }else{
+   		alert("no es primo");
+   }
+    
+    
+}
+
+</script>
+
+Ingrese numero: <input type="text" id="numbers" value="">
+<input type=button value="Calculate" onClick="primos()"><br>
+Result: <span id="results">(click "Calculate")</span>
+<div id="opcion"></div>
+<div id="primo"> </div>
+
+</body>
+</html>
